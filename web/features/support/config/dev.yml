@@ -1,0 +1,3 @@
+---
+  url: "http://rocklov-dev:3000"
+  mongo: "mongodb://rocklov-dev:27017/rocklov"

@@ -1,0 +1,41 @@
+---
+- title: senha incorreta
+  payload:
+    email: jamaica@terra.com.br
+    password: erva123
+  code: 401
+  error: Unauthorized
+- title: usuario não exixte
+  payload:
+    email: bob@terra.com.br
+    password: erva123
+  code: 401
+  error: Unauthorized
+- title: email em branco
+  payload:
+    email: ''
+    password: erva123
+  code: 412
+  error: required email
+- title: sem o campo email
+  payload:
+    password: erva123
+  code: 412
+  error: required email
+- title: email errado
+  payload:
+    email: jamaica#terra.com.br
+    password: erva123
+  code: 412
+  error: wrong email
+- title: senha em branco
+  payload:
+    email: jamaica@terra.com.br
+    password: ''
+  code: 412
+  error: required password
+- title: sem o campo senha
+  payload:
+    email: jamaica@terra.com.br
+  code: 412
+  error: required password

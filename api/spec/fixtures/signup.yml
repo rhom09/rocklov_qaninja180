@@ -1,0 +1,48 @@
+---
+- title: nome obrigatorio
+  payload:
+    name: ''
+    email: olav@ig.com.br
+    password: snow123
+  code: 412
+  error: required name
+- title: sem o campo nome
+  payload:
+    email: olav@ig.com.br
+    password: snow123
+  code: 412
+  error: required name
+- title: email obrigatorio
+  payload:
+    name: Olav Snow 
+    email: ''
+    password: snow123
+  code: 412
+  error: required email
+- title: sem o campo email
+  payload:
+    name: Olav Snow
+    password: snow123
+  code: 412
+  error: required email
+- title: email errado
+  payload:
+    name: Olav Snow 
+    email: 'olav#ig.com.br'
+    password: snow123
+  code: 412
+  error: wrong email
+- title: senha obrigatoria
+  payload:
+    name: Olav Snow
+    email: olav@ig.com.br
+    password: ''
+  code: 412
+  error: required password
+- title: sem o campo senha
+  payload:
+    name: Olav Snow
+    email: olav@ig.com.br
+  code: 412
+  error: required password
+
