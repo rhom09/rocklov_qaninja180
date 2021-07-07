@@ -1,4 +1,6 @@
 describe "POST /equipos" do
+
+  # Before para pegar o id do usuario, para usar no headers do POST.
   before(:all) do
     payload = { email: "fenomeno@ig.com.br", password: "090909" }
     result = Sessions.new.login(payload)
@@ -7,12 +9,15 @@ describe "POST /equipos" do
 
   context "novo equipo" do
     before(:all) do
-      thumbnail = File.open(File.join(Dir.pwd, "spec/fixtures/images", "kramer.jpg"))
+      # O argumento rb serve para que a imagem seja carregada corretamente e no formato binario como pede na api.
+      thumbnail = File.open(File.join(Dir.pwd, "spec/fixtures/images", "kramer.jpg"), "rb")
 
       payload = { thumbnail: thumbnail,
                   name: "Kramer Eddie Van Halen",
                   category: "Cordas",
                   price: 299 }
+
+      MongoDB.new.remove_equipo(payload[:name], @user_id)
 
       @result = Equipos.new.create(payload, @user_id)
     end
