@@ -26,4 +26,24 @@ describe "POST /equipos" do
       expect(@result.code).to eql 200
     end
   end
+
+  context "nao autorizado" do
+    before(:all) do
+      # O argumento rb serve para que a imagem seja carregada corretamente e no formato binario como pede na api.
+      thumbnail = File.open(File.join(Dir.pwd, "spec/fixtures/images", "baixo.jpg"), "rb")
+
+      payload = { thumbnail: thumbnail,
+                  name: "Contra Baixo",
+                  category: "Cordas",
+                  price: 59 }
+
+      MongoDB.new.remove_equipo(payload[:name], @user_id)
+
+      @result = Equipos.new.create(payload, nil)
+    end
+
+    it "deve retornar 401" do
+      expect(@result.code).to eql 401
+    end
+  end
 end
