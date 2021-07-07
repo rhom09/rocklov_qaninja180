@@ -9,10 +9,7 @@ describe "POST /equipos" do
 
   context "novo equipo" do
     before(:all) do
-      # O argumento rb serve para que a imagem seja carregada corretamente e no formato binario como pede na api.
-      thumbnail = File.open(File.join(Dir.pwd, "spec/fixtures/images", "kramer.jpg"), "rb")
-
-      payload = { thumbnail: thumbnail,
+      payload = { thumbnail: Helpers::get_thumb("kramer.jpg"),
                   name: "Kramer Eddie Van Halen",
                   category: "Cordas",
                   price: 299 }
@@ -29,10 +26,7 @@ describe "POST /equipos" do
 
   context "nao autorizado" do
     before(:all) do
-      # O argumento rb serve para que a imagem seja carregada corretamente e no formato binario como pede na api.
-      thumbnail = File.open(File.join(Dir.pwd, "spec/fixtures/images", "baixo.jpg"), "rb")
-
-      payload = { thumbnail: thumbnail,
+      payload = { thumbnail: Helpers::get_thumb("baixo.jpg"),
                   name: "Contra Baixo",
                   category: "Cordas",
                   price: 59 }
