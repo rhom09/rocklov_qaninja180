@@ -5,6 +5,10 @@ Funcionalidade: Remover Anúncios
     Quero poder remover esse anúncio
     Para que eu possa manter o meu Dashboard atualizado
 
+    Contexto: Login
+        * Login com "barry@terra.com.br" e "pwd123"
+
+    @temp
     Cenario: Remover um anúncio
 
         Dado que teho um anúncio indesejado:
