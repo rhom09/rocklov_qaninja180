@@ -31,7 +31,10 @@ Dado("acesso o meu dashboard") do
   expect(@dash_page.on_dash?).to be true
 end
 
-Quando("{string} e {string} solicita a locação desse equipo") do |string, string2|
+Quando("{string} e {string} solicita a locação desse equipo") do |email, password|
+  # Id do usuário capturado pelo metodo criado em SessionsService.
+  user_id = SessionsService.new.get_user_id(email, password)
+  EquiposService.new.booking(@equipo_id, user_id)
 end
 
 Então("devo ver a seguinte mensagem:") do |doc_string|

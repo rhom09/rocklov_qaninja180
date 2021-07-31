@@ -17,6 +17,8 @@ task :local_seeds do
     { name: "Bob Marley", email: "jamaica@terra.com.br", password: to_md5("canabis123") },
     { name: "Romilton Viana", email: "rhom@gmail.com", password: to_md5("pwd123") },
     { name: "Barry Allen", email: "barry@terra.com.br", password: to_md5("pwd123") },
+    { name: "Cisco Ramon", email: "cisco@gmail.com", password: to_md5("pwd123") },
+    { name: "Kate Snow", email: "kate@gmail.com", password: to_md5("pwd123") },
   ]
 
   MongoDB.new.drop_danger

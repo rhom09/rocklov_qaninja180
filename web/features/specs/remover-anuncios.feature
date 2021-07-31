@@ -18,8 +18,7 @@ Funcionalidade: Remover Anúncios
         Quando eu solito a exclusão desse item
             E confirmo a exclusão
         Então não devo ver esse item no meu Dashboard
-
-    @temp
+    
     Cenario: Não remover um anúncio
 
         Dado que teho um anúncio indesejado:
