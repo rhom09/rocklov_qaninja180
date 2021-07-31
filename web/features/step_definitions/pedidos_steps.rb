@@ -38,7 +38,16 @@ Quando("{string} e {string} solicita a locação desse equipo") do |email, passw
 end
 
 Então("devo ver a seguinte mensagem:") do |doc_string|
+  # gsub é um recurso do ruby para gerar subString. Ele substitui a string "DATA_ATUAL" pelo Time.now.strftime que tras a data atual
+  expect_message = doc_string.gsub("DATA_ATUAL", Time.now.strftime("%d/%m/%Y"))
+
+  expect(@dash_page.order).to have_text expect_message
 end
 
-Então("devo ver os links: {string} e {string} no pedido") do |string, string2|
+Então("devo ver os links: {string} e {string} no pedido") do |button_accept, button_reject|
+  # expect(page).to have_selector ".notifications button", text: button_accept
+  # expect(page).to have_selector ".notifications button", text: button_reject
+
+  expect(@dash_page.order_actions(button_accept)).to be true
+  expect(@dash_page.order_actions(button_reject)).to be true
 end
