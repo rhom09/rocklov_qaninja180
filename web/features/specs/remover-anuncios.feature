@@ -8,7 +8,6 @@ Funcionalidade: Remover Anúncios
     Contexto: Login
         * Login com "barry@terra.com.br" e "pwd123"
 
-    @temp
     Cenario: Remover um anúncio
 
         Dado que teho um anúncio indesejado:
@@ -20,13 +19,14 @@ Funcionalidade: Remover Anúncios
             E confirmo a exclusão
         Então não devo ver esse item no meu Dashboard
 
-    Cenario: Remover um anúncio
+    @temp
+    Cenario: Não remover um anúncio
 
         Dado que teho um anúncio indesejado:
-            | thumb     | telecaster.jpg |
-            | nome      | Telecaster     |
-            | categoria | Cordas         |
-            | preco     | 100            |
+            | thumb     | conga.jpg |
+            | nome      | Conga     |
+            | categoria | Outros    |
+            | preco     | 30        |
         Quando eu solito a exclusão desse item
             Mas não confirmo a exclusão
-        Então devo ver esse item no meu Dashboard
+        Então esse item deve permanecer no meu Dashboard
