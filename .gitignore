@@ -1,3 +1,6 @@
 .vscode
-/api/logs/
-/web/logs/
+logs/*.log
+logs/*.html
+logs/*.xml
+logs/*.json
+logs/*.png
