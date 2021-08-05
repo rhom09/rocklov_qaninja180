@@ -8,12 +8,12 @@ pipeline {
     stages {
         stage('Prep') {
             steps {
-                sh 'gem install rspec'
+                sh 'cd api && bundle install'
             }
         }
         stage('Testing') {
             steps {
-                sh 'rspec'
+                sh 'cd api && rspec'
             }
         }
     }
