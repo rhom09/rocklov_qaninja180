@@ -1,0 +1,37 @@
+pipeline {
+    agent {
+        docker {
+            image 'ruby'
+            args '--network rocklov-network'
+        }
+    }
+
+    stages {
+        stage('Prep') {
+            steps {
+                sh 'cd web && bundle install'
+            }
+        }
+        stage('Testing') {
+            steps {
+                sh 'cd web && rake local_seeds'                
+            }
+        }
+        stage('UAT') {
+            steps {
+                echo 'Aguardando testes de aceitação.'
+                input message: 'Podemos ir para produção?'
+            }
+        }
+        stage('Prod') {
+            steps {
+                echo 'WebApp pronta para produção :)'
+            }
+        }
+    }
+    post {
+        always {
+            echo 'todo'
+        }
+    }
+}
